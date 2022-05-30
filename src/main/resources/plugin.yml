@@ -2,5 +2,4 @@ name: UroriaNetwork
 version: 1.0.0
 author: tbias25
 main: de.tbias25.urorianetwork.UroriaNetwork
-
-commands:
+api-version: 1.18
