@@ -4,6 +4,8 @@ import de.tbias25.urorianetwork.core.listeners.PlayerJoinListener;
 import de.tbias25.urorianetwork.core.listeners.PlayerQuitListener;
 import de.tbias25.urorianetwork.core.managers.MongoDBManager;
 import de.tbias25.urorianetwork.core.managers.UserManager;
+import de.tbias25.urorianetwork.ranks.commands.RankCommand;
+import de.tbias25.urorianetwork.ranks.managers.RankManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class UroriaNetwork extends JavaPlugin {
@@ -12,9 +14,12 @@ public class UroriaNetwork extends JavaPlugin {
 
     private MongoDBManager mongoDBManager;
     private UserManager userManager;
+    private RankManager rankManager;
 
     private PlayerJoinListener playerJoinListener;
     private PlayerQuitListener playerQuitListener;
+
+    private RankCommand rankCommand;
 
     @Override
     public void onEnable() {
@@ -23,9 +28,13 @@ public class UroriaNetwork extends JavaPlugin {
         mongoDBManager.connect("cluster0.dbbmpfu.mongodb.net", "root", "2001abc");
         userManager = new UserManager(this);
         userManager.loadUsers();
+        rankManager = new RankManager(this);
+        rankManager.loadRanks();
 
         playerJoinListener = new PlayerJoinListener(this);
         playerQuitListener = new PlayerQuitListener(this);
+
+        rankCommand = new RankCommand(this);
     }
 
     @Override
@@ -48,6 +57,10 @@ public class UroriaNetwork extends JavaPlugin {
 
     public UserManager getUserManager() {
         return userManager;
+    }
+
+    public RankManager getRankManager() {
+        return rankManager;
     }
 
     public PlayerJoinListener getPlayerJoinListener() {

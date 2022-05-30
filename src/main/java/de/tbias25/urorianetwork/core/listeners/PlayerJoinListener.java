@@ -22,7 +22,6 @@ public class PlayerJoinListener implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-
         if (!userManager.userExists(player.getDisplayName())) {
             userManager.createUser(player.getUniqueId().toString(), player.getDisplayName(), (user -> {
             }));

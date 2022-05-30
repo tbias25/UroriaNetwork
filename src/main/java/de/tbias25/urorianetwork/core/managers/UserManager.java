@@ -7,7 +7,6 @@ import com.mongodb.client.model.Filters;
 import de.tbias25.urorianetwork.UroriaNetwork;
 import de.tbias25.urorianetwork.core.models.User;
 import org.bson.Document;
-import org.bukkit.Bukkit;
 
 import java.util.ArrayList;
 import java.util.HashMap;
